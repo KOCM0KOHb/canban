@@ -1,2 +1,2 @@
-# java-canban
+# java-kanban
 Repository for homework project.
