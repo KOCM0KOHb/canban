@@ -36,7 +36,7 @@ public class Manager {
         Epic epic = epics.get(subtask.getEpicId());
         if (epic != null) {
             subtasks.put(newSubtaskId, subtask);
-            epic.setSubtaskIds(newSubtaskId);
+            epic.addSubtaskIds(newSubtaskId);
             updateStatusEpic(epic);
         } else {
             System.out.println("Эпик не найден");
@@ -137,6 +137,7 @@ public class Manager {
             }
             return subtasksNew;
         } else {
+            System.out.println("Эпик не найден");
             return Collections.emptyList();
         }
     }
@@ -164,7 +165,20 @@ public class Manager {
                 epic.setStatus(Status.NEW);
             } else {
                 List<Subtask> subtasksNew = new ArrayList<>();
-                int countDone = 0;
+                boolean statusDone = true;
+                boolean statusNew = true;
+                boolean statusInProgress = true;
+
+                for (int i = 0; i < epic.getSubtaskIds().size(); i++) {
+                    subtasksNew.add(subtasks.get(epic.getSubtaskIds().get(i)));
+                }
+
+                for (Subtask subtask : subtasksNew) {
+                    statusDone &= (subtask.getStatus() == Status.DONE);
+                    statusNew &= (subtask.getStatus() == Status.NEW);
+                    statusInProgress &= (subtask.getStatus() == Status.IN_PROGRESS);
+                }
+                /*int countDone = 0;
                 int countNew = 0;
 
                 for (int i = 0; i < epic.getSubtaskIds().size(); i++) {
@@ -190,7 +204,7 @@ public class Manager {
                     epic.setStatus(Status.NEW);
                 } else {
                     epic.setStatus(Status.IN_PROGRESS);
-                }
+                }*/
             }
         } else {
             System.out.println("Эпик не найден");

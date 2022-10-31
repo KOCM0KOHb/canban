@@ -5,8 +5,8 @@ import status.Status;
 import java.util.Objects;
 
 public class Task {
-    private final String description;
-    private int id;
+    private String description;
+    private Integer id;
     private String name;
     private Status status;
 
