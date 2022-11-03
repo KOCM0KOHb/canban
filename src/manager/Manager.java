@@ -178,17 +178,20 @@ public class Manager {
                     statusNew &= (subtask.getStatus() == Status.NEW);
                     statusInProgress &= (subtask.getStatus() == Status.IN_PROGRESS);
                 }
-
-                int countDone = 0;
-                int countNew = 0;
                 
-                if (countDone == epic.getSubtaskIds().size()) {
-                    epic.setStatus(Status.DONE);
-                } else if (countNew == epic.getSubtaskIds().size()) {
-                    epic.setStatus(Status.NEW);
-                } else {
-                    epic.setStatus(Status.IN_PROGRESS);
-                }
+                if (statusDone) { 
+                
+                                    epic.setStatus(Status.DONE); 
+                
+                                } else if (statusNew) { 
+                
+                                    epic.setStatus(Status.NEW); 
+                
+                                } else { 
+                
+                                    epic.setStatus(Status.IN_PROGRESS); 
+                
+                                } 
             }
         } else {
             System.out.println("Эпик не найден");
