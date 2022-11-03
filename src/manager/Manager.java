@@ -234,7 +234,7 @@ public class Manager {
     }
 
     public void printSubtasks() {
-        if (subtasks.size() == 0) {
+        if (subtasks.isEmpty()) {
             System.out.println("Лист Сабтасков пустой");
             return;
         }
