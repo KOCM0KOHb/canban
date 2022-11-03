@@ -180,18 +180,12 @@ public class Manager {
                 }
                 
                 if (statusDone) { 
-                
-                                    epic.setStatus(Status.DONE); 
-                
-                                } else if (statusNew) { 
-                
-                                    epic.setStatus(Status.NEW); 
-                
-                                } else { 
-                
-                                    epic.setStatus(Status.IN_PROGRESS); 
-                
-                                } 
+                  epic.setStatus(Status.DONE); 
+                } else if (statusNew) { 
+                  epic.setStatus(Status.NEW); 
+                } else { 
+                  epic.setStatus(Status.IN_PROGRESS); 
+                } 
             }
         } else {
             System.out.println("Эпик не найден");
