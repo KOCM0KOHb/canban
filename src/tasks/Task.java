@@ -20,6 +20,10 @@ public class Task {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }
@@ -30,6 +34,10 @@ public class Task {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Status getStatus() {
