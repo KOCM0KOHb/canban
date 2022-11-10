@@ -1,0 +1,21 @@
+
+v
+java:S11927"[Define a constant instead of duplicating this literal "Ð­Ð¿Ð¸Ðº Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½" 5 times.(åÏùëúÿÿÿÿ
+Q
+java:S2696"6Make the enclosing method "static" or remove this set.(×¶åéøÿÿÿÿ
+S	java:S1067"9Replace this use of System.out or System.err by a logger.(åÏùëúÿÿÿÿ
+S	java:S106A"9Replace this use of System.out or System.err by a logger.(¹Ê¸þÿÿÿÿ
+S	java:S106N"9Replace this use of System.out or System.err by a logger.(åÏùëúÿÿÿÿ
+S	java:S106["9Replace this use of System.out or System.err by a logger.(Ìœ±ªùÿÿÿÿ
+N	java:S106‡"9Replace this use of System.out or System.err by a logger.(ÄƒÏ
+T	java:S106"9Replace this use of System.out or System.err by a logger.(øº…ˆÿÿÿÿÿ
+T	java:S106™"9Replace this use of System.out or System.err by a logger.(¨ã¢ãüÿÿÿÿ
+T	java:S106©"9Replace this use of System.out or System.err by a logger.(åÏùëúÿÿÿÿ
+T	java:S106³"9Replace this use of System.out or System.err by a logger.(¹Ê¸þÿÿÿÿ
+T	java:S106½"9Replace this use of System.out or System.err by a logger.(åÏùëúÿÿÿÿ
+n
+java:S3776Â"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÝÉÌöÿÿÿÿÿ
+U
+java:S1155Ä">Use isEmpty() to check whether the collection is empty or not.(ä‡ýƒ
+T	java:S106Ý"9Replace this use of System.out or System.err by a logger.(åÏùëúÿÿÿÿ
+T	java:S106è"9Replace this use of System.out or System.err by a logger.(Ìœ±ªùÿÿÿÿ
