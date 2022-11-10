@@ -15,7 +15,4 @@ public enum Status {
         return translation;
     }
 
-    public String toString() {
-        return translation;
-    }
 }

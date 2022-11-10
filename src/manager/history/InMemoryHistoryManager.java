@@ -2,21 +2,19 @@ package manager.history;
 
 import tasks.Task;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
-    private static final int HISTORY_LIMITS = 10;
-    List<Task> historyTasksViews = new ArrayList<>();
+    private static final int HISTORY_LIMIT = 10;
+    List<Task> historyTasksViews = new LinkedList<>();
 
     @Override
     public void add(Task task) {
         if (task != null) {
-            if (historyTasksViews.size() >= HISTORY_LIMITS) {
+            historyTasksViews.add(task);
+            if (historyTasksViews.size() >= HISTORY_LIMIT) {
                 historyTasksViews.remove(0);
-                historyTasksViews.add(task);
-            } else {
-                historyTasksViews.add(task);
             }
         } else {
             System.out.println("Таск не найден");

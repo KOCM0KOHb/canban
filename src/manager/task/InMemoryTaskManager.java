@@ -9,7 +9,7 @@ import tasks.Task;
 import java.util.*;
 
 public class InMemoryTaskManager implements TaskManager {
-    private static int id = 0;
+    private static int id;
 
     private final Map<Integer, Task> tasks = new HashMap<>();
     private final Map<Integer, Subtask> subtasks = new HashMap<>();
@@ -131,7 +131,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public List<Task> getAllTasks() {
-        if (tasks.size() == 0) {
+        if (tasks.isEmpty()) {
             System.out.println("Лист Тасков пустой");
             return Collections.emptyList();
         }
@@ -140,7 +140,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public List<Epic> getAllEpics() {
-        if (epics.size() == 0) {
+        if (epics.isEmpty()) {
             System.out.println("Лист Эпиков пустой");
             return Collections.emptyList();
         }
@@ -149,7 +149,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public List<Subtask> getAllSubtasks() {
-        if (subtasks.size() == 0) {
+        if (subtasks.isEmpty()) {
             System.out.println("Лист Сабтасков пустой");
             return Collections.emptyList();
         }
