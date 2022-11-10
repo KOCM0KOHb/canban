@@ -199,7 +199,6 @@ public class InMemoryTaskManager implements TaskManager {
                 List<Subtask> subtasksNew = new ArrayList<>();
                 boolean statusDone = true;
                 boolean statusNew = true;
-                boolean statusInProgress = true;
 
                 for (int i = 0; i < epic.getSubtaskIds().size(); i++) {
                     subtasksNew.add(subtasks.get(epic.getSubtaskIds().get(i)));
@@ -208,7 +207,6 @@ public class InMemoryTaskManager implements TaskManager {
                 for (Subtask subtask : subtasksNew) {
                     statusDone &= (subtask.getStatus() == Status.DONE);
                     statusNew &= (subtask.getStatus() == Status.NEW);
-                    statusInProgress &= (subtask.getStatus() == Status.IN_PROGRESS);
                 }
 
                 if (statusDone) {
@@ -232,56 +230,6 @@ public class InMemoryTaskManager implements TaskManager {
             updateStatusEpic(epic);
         } else {
             System.out.println("Сабтаск не найден");
-        }
-    }
-
-    @Override
-    public void printTasks() {
-        if (tasks.size() == 0) {
-            System.out.println("Лист Тасков пустой");
-            return;
-        }
-        for (Task task : tasks.values()) {
-            System.out.println("Task{" +
-                    "description='" + task.getDescription() + '\'' +
-                    ", id=" + task.getId() +
-                    ", name='" + task.getName() + '\'' +
-                    ", status=" + task.getStatus() +
-                    '}');
-        }
-    }
-
-    @Override
-    public void printEpics() {
-        if (epics.size() == 0) {
-            System.out.println("Лист Эпиков пустой");
-            return;
-        }
-        for (Epic epic : epics.values()) {
-            System.out.println("Epic{" +
-                    "subtasksIds=" + epic.getSubtaskIds() +
-                    ", description='" + epic.getDescription() + '\'' +
-                    ", id=" + epic.getId() +
-                    ", name='" + epic.getName() + '\'' +
-                    ", status=" + epic.getStatus() +
-                    '}');
-        }
-    }
-
-    @Override
-    public void printSubtasks() {
-        if (subtasks.isEmpty()) {
-            System.out.println("Лист Сабтасков пустой");
-            return;
-        }
-        for (Subtask subtask : subtasks.values()) {
-            System.out.println("Subtask{" +
-                    "epicId=" + subtask.getEpicId() +
-                    ", description='" + subtask.getDescription() + '\'' +
-                    ", id=" + subtask.getId() +
-                    ", name='" + subtask.getName() + '\'' +
-                    ", status=" + subtask.getStatus() +
-                    '}');
         }
     }
 

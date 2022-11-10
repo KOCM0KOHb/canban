@@ -7,13 +7,13 @@ import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
     private static final int HISTORY_LIMIT = 10;
-    List<Task> historyTasksViews = new LinkedList<>();
+    private static List<Task> historyTasksViews = new LinkedList<>();
 
     @Override
     public void add(Task task) {
         if (task != null) {
             historyTasksViews.add(task);
-            if (historyTasksViews.size() >= HISTORY_LIMIT) {
+            if (historyTasksViews.size() > HISTORY_LIMIT) {
                 historyTasksViews.remove(0);
             }
         } else {
