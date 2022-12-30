@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Task {
     private String description;
-    private Integer id;
+    private int id;
     private String name;
     private Status status;
 

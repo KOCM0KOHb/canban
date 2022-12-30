@@ -5,83 +5,42 @@ import tasks.Epic;
 import tasks.Subtask;
 import tasks.Task;
 
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-
         TaskManager taskManager = Managers.getInMemoryTaskManager(Managers.getDefaultHistory());
-        List<Task> history = taskManager.getHistory();
 
-        System.out.println("-> Task <-");
-        System.out.println("-> Создадим Таск");
-        taskManager.createTask(new Task("Описание-1", "Task-1", Status.NEW));
-        taskManager.createTask(new Task("Описание-2", "Task-2", Status.NEW));
-        System.out.println("-> Получим все Task");
-        List<Task> taskList = taskManager.getAllTasks();
-        System.out.println(taskList);
-        System.out.println("-> Получение Таска по id");
-        Task task = taskManager.getTaskById(1);
-        System.out.println(task);
-        System.out.println("-> Обновим Таск");
-        task.setStatus(Status.IN_PROGRESS);
-        taskManager.updateTask(task);
-        System.out.println(task);
-        System.out.println();
+        System.out.println("Протестируем историю...");
+        System.out.println("Сначала создадим список задач...");
+        taskManager.createTask(new Task("Описание-1", "Task-1", Status.NEW)); // id 1
+        taskManager.createTask(new Task("Описание-2", "Task-2", Status.NEW)); // id 2
+        taskManager.createEpic(new Epic("Описание-1", "Epic-1", Status.NEW)); // id 3
+        taskManager.createEpic(new Epic("Описание-1", "Epic-2", Status.NEW)); // id 4
+        taskManager.createSubtask(new Subtask("Описание-1", "Subtask-1", Status.NEW, 3)); // id 5
+        taskManager.createSubtask(new Subtask("Описание-2", "Subtask-2", Status.NEW, 3)); // id 6
+        taskManager.createSubtask(new Subtask("Описание-3", "Subtask-3", Status.NEW, 3)); // id 7
 
-        System.out.println("-> Эпик <-");
-        System.out.println("-> Создадим Epic");
-        taskManager.createEpic(new Epic("Описание-1", "Epic-1", Status.NEW));
-        taskManager.createEpic(new Epic("Описание-2", "Epic-2", Status.NEW));
-        System.out.println("-> Получим все Эпики");
-        List<Epic> epics = taskManager.getAllEpics();
-        System.out.println(epics);
-        System.out.println("-> Получим Эпик по id");
-        Epic epic = taskManager.getEpicById(3);
-        System.out.println(epic);
-        System.out.println("-> Обновим Эпик");
-        epic.setStatus(Status.IN_PROGRESS);
-        taskManager.updateEpic(epic);
-        Epic epic3 = taskManager.getEpicById(3);
-        System.out.println(epic3);
-        System.out.println();
-
-        System.out.println("-> Сабтаск <-");
-        System.out.println("Создадим Subtask");
-        taskManager.createSubtask(new Subtask("Описание-1", "Subtask-1", Status.NEW, 3));
-        taskManager.createSubtask(new Subtask("Описание-2", "Subtask-2", Status.NEW, 3));
-        taskManager.createSubtask(new Subtask("Описание-3", "Subtask-3", Status.NEW, 4));
-        taskManager.createSubtask(new Subtask("Описание-4", "Subtask-4", Status.NEW, 4));
-        System.out.println("-> Получим все Сабтаски по epic id");
-        List<Subtask> subtasksByEpicId = taskManager.getAllSubtasksByEpicId(3);
-        System.out.println(subtasksByEpicId);
-        System.out.println("-> Получим все Сабтаски");
-        List<Subtask> subtasks = taskManager.getAllSubtasks();
-        System.out.println(subtasks);
-        System.out.println("-> Получим Сабтаск по id");
-        Subtask subtask = taskManager.getSubtaskById(5);
-        System.out.println(subtask);
-        System.out.println("-> Обновим Сабтаск");
-        subtask.setStatus(Status.IN_PROGRESS);
-        taskManager.updateSubtask(subtask);
-        System.out.println(subtask);
-        System.out.println();
-
-        System.out.println("-> Потыкаем в ранее созданные записи ещё <-");
+        System.out.println("Обратимся к задачам по ID...");
         taskManager.getTaskById(1);
         taskManager.getEpicById(3);
-        taskManager.getTaskById(2);
-        taskManager.getSubtaskById(5);
-        taskManager.getSubtaskById(6);
+        taskManager.getEpicById(3);
+        taskManager.getEpicById(3);
+        taskManager.getTaskById(1);
         taskManager.getEpicById(4);
         taskManager.getSubtaskById(5);
+        taskManager.getSubtaskById(5);
         taskManager.getSubtaskById(6);
-        taskManager.getSubtaskById(7);
-        taskManager.getSubtaskById(8);
-        taskManager.getSubtaskById(7);
-        taskManager.getTaskById(2);
 
-        System.out.println("-> Посмотрим историю просмотров <-");
+        System.out.println("Откроем историю просмотров...");
+        List<Task> history = taskManager.getHistory();
         System.out.println(history);
+
+        System.out.println("Почистим историю...");
+        taskManager.remove(1);
+        taskManager.deleteEpicById(3);
+
+        List<Task> historyAfterRemove = taskManager.getHistory();
+        System.out.println(historyAfterRemove);
     }
 }
